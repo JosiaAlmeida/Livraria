@@ -13,7 +13,7 @@ namespace biblioteca.repository
 
         public List<Book> find()
         {
-            return _book.ToList();
+            return this._book;
         }
 
         public Book post(Book book)
