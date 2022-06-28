@@ -18,8 +18,15 @@ namespace biblioteca.repository
 
         public Book post(Book book)
         {
-            this._book.Add(book);
-            return book;
+            try
+            {
+                this._book.Add(book);
+                return book;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
         public Book put(Book book, int id)
         {

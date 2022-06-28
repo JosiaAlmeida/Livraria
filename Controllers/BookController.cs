@@ -14,7 +14,7 @@ namespace biblioteca.Controllers
     [Route("[controller]")]
     public class BookController : Controller
     {
-        private readonly BookRepository _service = new BookRepository();
+        private BookRepository _service = new BookRepository();
         private readonly ILogger<BookController> _logger;
 
         public BookController(ILogger<BookController> logger)
@@ -23,9 +23,20 @@ namespace biblioteca.Controllers
         }
 
         [HttpGet()]
-        public List<Book> Index()
+        public IActionResult Index()
         {
-            return this._service.find();
+            return Ok(this._service.find());
+        }
+
+        [HttpPost()]
+        [ProducesResponseType((200), Type = typeof(List<Book>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        public IActionResult Post([FromBody] Book book)
+        {
+            if (book == null || book is null) return BadRequest();
+            return Ok(this._service.post(book));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
