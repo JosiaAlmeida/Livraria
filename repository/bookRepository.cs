@@ -30,7 +30,7 @@ namespace biblioteca.repository
         }
         public Book put(Book book, int id)
         {
-            Book data = this._book.Find(x => x.id == id);
+            Book data = this._book.FirstOrDefault(x => x.id == id);
             return data;
         }
 
