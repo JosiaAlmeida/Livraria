@@ -7,9 +7,9 @@ using biblioteca.models;
 
 namespace biblioteca.repository
 {
-    public class bookRepository : IBook
+    public class BookRepository : IBook
     {
-        private List<Book> _book = new List<Book>();
+        public List<Book> _book = new List<Book>();
 
         public List<Book> find()
         {
